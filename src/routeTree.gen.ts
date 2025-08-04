@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ClerkRouteRouteImport } from './routes/clerk/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedInputShowcaseRouteImport } from './routes/_authenticated/input-showcase'
+import { Route as AuthenticatedButtonShowcaseRouteImport } from './routes/_authenticated/button-showcase'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
 import { Route as errors500RouteImport } from './routes/(errors)/500'
 import { Route as errors404RouteImport } from './routes/(errors)/404'
@@ -53,6 +55,18 @@ const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedInputShowcaseRoute =
+  AuthenticatedInputShowcaseRouteImport.update({
+    id: '/input-showcase',
+    path: '/input-showcase',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedButtonShowcaseRoute =
+  AuthenticatedButtonShowcaseRouteImport.update({
+    id: '/button-showcase',
+    path: '/button-showcase',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const errors503Route = errors503RouteImport.update({
   id: '/(errors)/503',
   path: '/503',
@@ -204,6 +218,8 @@ export interface FileRoutesByFullPath {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
+  '/button-showcase': typeof AuthenticatedButtonShowcaseRoute
+  '/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -231,6 +247,8 @@ export interface FileRoutesByTo {
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
+  '/button-showcase': typeof AuthenticatedButtonShowcaseRoute
+  '/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -263,6 +281,8 @@ export interface FileRoutesById {
   '/(errors)/404': typeof errors404Route
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
+  '/_authenticated/button-showcase': typeof AuthenticatedButtonShowcaseRoute
+  '/_authenticated/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -294,6 +314,8 @@ export interface FileRouteTypes {
     | '/404'
     | '/500'
     | '/503'
+    | '/button-showcase'
+    | '/input-showcase'
     | '/'
     | '/settings/account'
     | '/settings/appearance'
@@ -321,6 +343,8 @@ export interface FileRouteTypes {
     | '/404'
     | '/500'
     | '/503'
+    | '/button-showcase'
+    | '/input-showcase'
     | '/'
     | '/settings/account'
     | '/settings/appearance'
@@ -352,6 +376,8 @@ export interface FileRouteTypes {
     | '/(errors)/404'
     | '/(errors)/500'
     | '/(errors)/503'
+    | '/_authenticated/button-showcase'
+    | '/_authenticated/input-showcase'
     | '/_authenticated/'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
@@ -404,6 +430,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/input-showcase': {
+      id: '/_authenticated/input-showcase'
+      path: '/input-showcase'
+      fullPath: '/input-showcase'
+      preLoaderRoute: typeof AuthenticatedInputShowcaseRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/button-showcase': {
+      id: '/_authenticated/button-showcase'
+      path: '/button-showcase'
+      fullPath: '/button-showcase'
+      preLoaderRoute: typeof AuthenticatedButtonShowcaseRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/(errors)/503': {
@@ -616,6 +656,8 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
+  AuthenticatedButtonShowcaseRoute: typeof AuthenticatedButtonShowcaseRoute
+  AuthenticatedInputShowcaseRoute: typeof AuthenticatedInputShowcaseRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
@@ -626,6 +668,8 @@ interface AuthenticatedRouteRouteChildren {
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
+  AuthenticatedButtonShowcaseRoute: AuthenticatedButtonShowcaseRoute,
+  AuthenticatedInputShowcaseRoute: AuthenticatedInputShowcaseRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
