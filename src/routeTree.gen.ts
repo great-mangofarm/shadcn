@@ -13,6 +13,8 @@ import { Route as ClerkRouteRouteImport } from './routes/clerk/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
 import { Route as AuthenticatedInputShowcaseRouteImport } from './routes/_authenticated/input-showcase'
+import { Route as AuthenticatedCardPopoverShowcaseRouteImport } from './routes/_authenticated/card-popover-showcase'
+import { Route as AuthenticatedCalendarShowcaseRouteImport } from './routes/_authenticated/calendar-showcase'
 import { Route as AuthenticatedButtonShowcaseRouteImport } from './routes/_authenticated/button-showcase'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
 import { Route as errors500RouteImport } from './routes/(errors)/500'
@@ -59,6 +61,18 @@ const AuthenticatedInputShowcaseRoute =
   AuthenticatedInputShowcaseRouteImport.update({
     id: '/input-showcase',
     path: '/input-showcase',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCardPopoverShowcaseRoute =
+  AuthenticatedCardPopoverShowcaseRouteImport.update({
+    id: '/card-popover-showcase',
+    path: '/card-popover-showcase',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedCalendarShowcaseRoute =
+  AuthenticatedCalendarShowcaseRouteImport.update({
+    id: '/calendar-showcase',
+    path: '/calendar-showcase',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedButtonShowcaseRoute =
@@ -219,6 +233,8 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/button-showcase': typeof AuthenticatedButtonShowcaseRoute
+  '/calendar-showcase': typeof AuthenticatedCalendarShowcaseRoute
+  '/card-popover-showcase': typeof AuthenticatedCardPopoverShowcaseRoute
   '/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -248,6 +264,8 @@ export interface FileRoutesByTo {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/button-showcase': typeof AuthenticatedButtonShowcaseRoute
+  '/calendar-showcase': typeof AuthenticatedCalendarShowcaseRoute
+  '/card-popover-showcase': typeof AuthenticatedCardPopoverShowcaseRoute
   '/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -282,6 +300,8 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
   '/_authenticated/button-showcase': typeof AuthenticatedButtonShowcaseRoute
+  '/_authenticated/calendar-showcase': typeof AuthenticatedCalendarShowcaseRoute
+  '/_authenticated/card-popover-showcase': typeof AuthenticatedCardPopoverShowcaseRoute
   '/_authenticated/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -315,6 +335,8 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/button-showcase'
+    | '/calendar-showcase'
+    | '/card-popover-showcase'
     | '/input-showcase'
     | '/'
     | '/settings/account'
@@ -344,6 +366,8 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/button-showcase'
+    | '/calendar-showcase'
+    | '/card-popover-showcase'
     | '/input-showcase'
     | '/'
     | '/settings/account'
@@ -377,6 +401,8 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/button-showcase'
+    | '/_authenticated/calendar-showcase'
+    | '/_authenticated/card-popover-showcase'
     | '/_authenticated/input-showcase'
     | '/_authenticated/'
     | '/_authenticated/settings/account'
@@ -437,6 +463,20 @@ declare module '@tanstack/react-router' {
       path: '/input-showcase'
       fullPath: '/input-showcase'
       preLoaderRoute: typeof AuthenticatedInputShowcaseRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/card-popover-showcase': {
+      id: '/_authenticated/card-popover-showcase'
+      path: '/card-popover-showcase'
+      fullPath: '/card-popover-showcase'
+      preLoaderRoute: typeof AuthenticatedCardPopoverShowcaseRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/calendar-showcase': {
+      id: '/_authenticated/calendar-showcase'
+      path: '/calendar-showcase'
+      fullPath: '/calendar-showcase'
+      preLoaderRoute: typeof AuthenticatedCalendarShowcaseRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/button-showcase': {
@@ -657,6 +697,8 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedButtonShowcaseRoute: typeof AuthenticatedButtonShowcaseRoute
+  AuthenticatedCalendarShowcaseRoute: typeof AuthenticatedCalendarShowcaseRoute
+  AuthenticatedCardPopoverShowcaseRoute: typeof AuthenticatedCardPopoverShowcaseRoute
   AuthenticatedInputShowcaseRoute: typeof AuthenticatedInputShowcaseRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
@@ -669,6 +711,8 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedButtonShowcaseRoute: AuthenticatedButtonShowcaseRoute,
+  AuthenticatedCalendarShowcaseRoute: AuthenticatedCalendarShowcaseRoute,
+  AuthenticatedCardPopoverShowcaseRoute: AuthenticatedCardPopoverShowcaseRoute,
   AuthenticatedInputShowcaseRoute: AuthenticatedInputShowcaseRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
