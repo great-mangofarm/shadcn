@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/button'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Settings, MoreHorizontal, User, Heart, Share } from 'lucide-react'
 
-export const Route = createFileRoute('/_authenticated/card-popover-showcase')({
+export const Route = createFileRoute('/_authenticated/card-showcase')({
   component: CardShowcase,
 })
 
@@ -49,7 +49,7 @@ function CardShowcase() {
               </CardDescription>
             </CardHeader>
             <CardContent className='space-y-6'>
-              
+
               {/* 실제 카드로 영역 시각화 */}
               <div className='space-y-4'>
                 <h3 className='text-lg font-semibold'>1. 영역별 구분 시각화</h3>
@@ -74,7 +74,7 @@ function CardShowcase() {
                       </Button>
                     </CardAction>
                   </CardHeader>
-                  
+
                   {/* Content 영역 표시 */}
                   <CardContent className='bg-orange-50 dark:bg-orange-950 border-2 border-orange-300 border-dashed relative'>
                     <div className='absolute -top-6 left-0 bg-orange-600 text-white px-2 py-1 rounded text-xs font-bold'>
@@ -83,7 +83,7 @@ function CardShowcase() {
                     <p className='text-sm'>여기가 실제 콘텐츠가 들어가는 영역입니다.</p>
                     <p className='text-xs text-muted-foreground mt-2'>이미지, 텍스트, 버튼 등 모든 내용</p>
                   </CardContent>
-                  
+
                   {/* Footer 영역 표시 */}
                   <CardFooter className='bg-red-50 dark:bg-red-950 border-2 border-red-300 border-dashed relative'>
                     <div className='absolute -top-6 left-0 bg-red-600 text-white px-2 py-1 rounded text-xs font-bold'>
@@ -138,7 +138,7 @@ function CardShowcase() {
               <div className='space-y-4'>
                 <h3 className='text-lg font-semibold'>3. 각 컴포넌트의 실제 CSS 클래스</h3>
                 <div className='grid gap-4'>
-                  
+
                   {/* Card 루트 */}
                   <div className='p-4 bg-blue-50 dark:bg-blue-950 rounded-lg'>
                     <h4 className='font-medium text-sm mb-2'>Card (루트 컨테이너)</h4>
@@ -186,7 +186,7 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
                   </div>
 
                   <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
-                    
+
                     <div className='p-4 bg-purple-50 dark:bg-purple-950 rounded-lg'>
                       <h4 className='font-medium text-sm mb-2'>CardTitle</h4>
                       <div className='text-xs mb-2 text-purple-700 dark:text-purple-300'>
@@ -230,7 +230,7 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
 
                   {/* Content & Footer */}
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                    
+
                     <div className='p-4 bg-rose-50 dark:bg-rose-950 rounded-lg'>
                       <h4 className='font-medium text-sm mb-2'>CardContent</h4>
                       <div className='text-xs mb-2 text-rose-700 dark:text-rose-300'>
@@ -272,7 +272,7 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
                       <strong className='text-red-600'>❌ 내장 Variants:</strong> 없음 (size, variant 등의 props 없음)
                     </div>
                     <div>
-                      <strong className='text-blue-600'>✅ 사용 가능한 Props:</strong> 
+                      <strong className='text-blue-600'>✅ 사용 가능한 Props:</strong>
                       <ul className='ml-4 mt-2 space-y-1'>
                         <li>• <code className='bg-gray-200 dark:bg-gray-700 px-1 rounded'>className</code> - 커스텀 CSS 클래스</li>
                         <li>• <code className='bg-gray-200 dark:bg-gray-700 px-1 rounded'>children</code> - 자식 요소</li>
@@ -290,7 +290,7 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
               <div className='space-y-4'>
                 <h3 className='text-lg font-semibold'>5. 실제 적용되는 CSS Values</h3>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                  
+
                   <div className='p-4 bg-muted/50 rounded-lg'>
                     <h4 className='font-medium mb-3'>Spacing Values</h4>
                     <div className='space-y-2 text-sm font-mono'>
@@ -348,9 +348,9 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
               <CardDescription>다양한 Card 구성 패턴</CardDescription>
             </CardHeader>
             <CardContent className='space-y-6'>
-              
+
               <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
-                
+
                 {/* 기본 Card */}
                 <Card>
                   <CardHeader>
@@ -392,7 +392,7 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
 
               <Separator />
 
-              {/* 풀 구성 Card */}  
+              {/* 풀 구성 Card */}
               <div className='space-y-4'>
                 <h3 className='text-lg font-semibold'>완전한 구성의 Card</h3>
                 <Card>
@@ -439,7 +439,7 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
               <div className='space-y-4'>
                 <h3 className='text-lg font-semibold'>실제 사용 예시 (className 커스텀)</h3>
                 <div className='space-y-4'>
-                  
+
                   {/* border-b/t 예시 */}
                   <Card>
                     <CardHeader className='border-b'>
@@ -485,7 +485,7 @@ has-data-[slot=card-action]:grid-cols-[1fr_auto]
               <CardDescription>Card 컴포넌트를 피그마에서 구현하기 위한 완전한 가이드</CardDescription>
             </CardHeader>
             <CardContent className='space-y-6'>
-              
+
               {/* 피그마 컴포넌트 구조 */}
               <div className='p-4 bg-muted/50 rounded-lg'>
                 <h4 className='font-medium mb-3'>실제 프로젝트 기반 피그마 구조</h4>

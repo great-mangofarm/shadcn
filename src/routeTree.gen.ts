@@ -12,8 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ClerkRouteRouteImport } from './routes/clerk/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedPopoverShowcaseRouteImport } from './routes/_authenticated/popover-showcase'
 import { Route as AuthenticatedInputShowcaseRouteImport } from './routes/_authenticated/input-showcase'
-import { Route as AuthenticatedCardPopoverShowcaseRouteImport } from './routes/_authenticated/card-popover-showcase'
+import { Route as AuthenticatedCardShowcaseRouteImport } from './routes/_authenticated/card-showcase'
 import { Route as AuthenticatedCalendarShowcaseRouteImport } from './routes/_authenticated/calendar-showcase'
 import { Route as AuthenticatedButtonShowcaseRouteImport } from './routes/_authenticated/button-showcase'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
@@ -57,16 +58,22 @@ const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedPopoverShowcaseRoute =
+  AuthenticatedPopoverShowcaseRouteImport.update({
+    id: '/popover-showcase',
+    path: '/popover-showcase',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedInputShowcaseRoute =
   AuthenticatedInputShowcaseRouteImport.update({
     id: '/input-showcase',
     path: '/input-showcase',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedCardPopoverShowcaseRoute =
-  AuthenticatedCardPopoverShowcaseRouteImport.update({
-    id: '/card-popover-showcase',
-    path: '/card-popover-showcase',
+const AuthenticatedCardShowcaseRoute =
+  AuthenticatedCardShowcaseRouteImport.update({
+    id: '/card-showcase',
+    path: '/card-showcase',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedCalendarShowcaseRoute =
@@ -234,8 +241,9 @@ export interface FileRoutesByFullPath {
   '/503': typeof errors503Route
   '/button-showcase': typeof AuthenticatedButtonShowcaseRoute
   '/calendar-showcase': typeof AuthenticatedCalendarShowcaseRoute
-  '/card-popover-showcase': typeof AuthenticatedCardPopoverShowcaseRoute
+  '/card-showcase': typeof AuthenticatedCardShowcaseRoute
   '/input-showcase': typeof AuthenticatedInputShowcaseRoute
+  '/popover-showcase': typeof AuthenticatedPopoverShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -265,8 +273,9 @@ export interface FileRoutesByTo {
   '/503': typeof errors503Route
   '/button-showcase': typeof AuthenticatedButtonShowcaseRoute
   '/calendar-showcase': typeof AuthenticatedCalendarShowcaseRoute
-  '/card-popover-showcase': typeof AuthenticatedCardPopoverShowcaseRoute
+  '/card-showcase': typeof AuthenticatedCardShowcaseRoute
   '/input-showcase': typeof AuthenticatedInputShowcaseRoute
+  '/popover-showcase': typeof AuthenticatedPopoverShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -301,8 +310,9 @@ export interface FileRoutesById {
   '/(errors)/503': typeof errors503Route
   '/_authenticated/button-showcase': typeof AuthenticatedButtonShowcaseRoute
   '/_authenticated/calendar-showcase': typeof AuthenticatedCalendarShowcaseRoute
-  '/_authenticated/card-popover-showcase': typeof AuthenticatedCardPopoverShowcaseRoute
+  '/_authenticated/card-showcase': typeof AuthenticatedCardShowcaseRoute
   '/_authenticated/input-showcase': typeof AuthenticatedInputShowcaseRoute
+  '/_authenticated/popover-showcase': typeof AuthenticatedPopoverShowcaseRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -336,8 +346,9 @@ export interface FileRouteTypes {
     | '/503'
     | '/button-showcase'
     | '/calendar-showcase'
-    | '/card-popover-showcase'
+    | '/card-showcase'
     | '/input-showcase'
+    | '/popover-showcase'
     | '/'
     | '/settings/account'
     | '/settings/appearance'
@@ -367,8 +378,9 @@ export interface FileRouteTypes {
     | '/503'
     | '/button-showcase'
     | '/calendar-showcase'
-    | '/card-popover-showcase'
+    | '/card-showcase'
     | '/input-showcase'
+    | '/popover-showcase'
     | '/'
     | '/settings/account'
     | '/settings/appearance'
@@ -402,8 +414,9 @@ export interface FileRouteTypes {
     | '/(errors)/503'
     | '/_authenticated/button-showcase'
     | '/_authenticated/calendar-showcase'
-    | '/_authenticated/card-popover-showcase'
+    | '/_authenticated/card-showcase'
     | '/_authenticated/input-showcase'
+    | '/_authenticated/popover-showcase'
     | '/_authenticated/'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
@@ -458,6 +471,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/popover-showcase': {
+      id: '/_authenticated/popover-showcase'
+      path: '/popover-showcase'
+      fullPath: '/popover-showcase'
+      preLoaderRoute: typeof AuthenticatedPopoverShowcaseRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/input-showcase': {
       id: '/_authenticated/input-showcase'
       path: '/input-showcase'
@@ -465,11 +485,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedInputShowcaseRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/card-popover-showcase': {
-      id: '/_authenticated/card-popover-showcase'
-      path: '/card-popover-showcase'
-      fullPath: '/card-popover-showcase'
-      preLoaderRoute: typeof AuthenticatedCardPopoverShowcaseRouteImport
+    '/_authenticated/card-showcase': {
+      id: '/_authenticated/card-showcase'
+      path: '/card-showcase'
+      fullPath: '/card-showcase'
+      preLoaderRoute: typeof AuthenticatedCardShowcaseRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/calendar-showcase': {
@@ -698,8 +718,9 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedButtonShowcaseRoute: typeof AuthenticatedButtonShowcaseRoute
   AuthenticatedCalendarShowcaseRoute: typeof AuthenticatedCalendarShowcaseRoute
-  AuthenticatedCardPopoverShowcaseRoute: typeof AuthenticatedCardPopoverShowcaseRoute
+  AuthenticatedCardShowcaseRoute: typeof AuthenticatedCardShowcaseRoute
   AuthenticatedInputShowcaseRoute: typeof AuthenticatedInputShowcaseRoute
+  AuthenticatedPopoverShowcaseRoute: typeof AuthenticatedPopoverShowcaseRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
@@ -712,8 +733,9 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedButtonShowcaseRoute: AuthenticatedButtonShowcaseRoute,
   AuthenticatedCalendarShowcaseRoute: AuthenticatedCalendarShowcaseRoute,
-  AuthenticatedCardPopoverShowcaseRoute: AuthenticatedCardPopoverShowcaseRoute,
+  AuthenticatedCardShowcaseRoute: AuthenticatedCardShowcaseRoute,
   AuthenticatedInputShowcaseRoute: AuthenticatedInputShowcaseRoute,
+  AuthenticatedPopoverShowcaseRoute: AuthenticatedPopoverShowcaseRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
