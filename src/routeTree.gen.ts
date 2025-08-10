@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ClerkRouteRouteImport } from './routes/clerk/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthenticatedIndexRouteImport } from './routes/_authenticated/index'
+import { Route as AuthenticatedTableShowcaseRouteImport } from './routes/_authenticated/table-showcase'
 import { Route as AuthenticatedSelectShowcaseRouteImport } from './routes/_authenticated/select-showcase'
 import { Route as AuthenticatedPopoverShowcaseRouteImport } from './routes/_authenticated/popover-showcase'
 import { Route as AuthenticatedInputShowcaseRouteImport } from './routes/_authenticated/input-showcase'
@@ -59,6 +60,12 @@ const AuthenticatedIndexRoute = AuthenticatedIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedTableShowcaseRoute =
+  AuthenticatedTableShowcaseRouteImport.update({
+    id: '/table-showcase',
+    path: '/table-showcase',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedSelectShowcaseRoute =
   AuthenticatedSelectShowcaseRouteImport.update({
     id: '/select-showcase',
@@ -252,6 +259,7 @@ export interface FileRoutesByFullPath {
   '/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/popover-showcase': typeof AuthenticatedPopoverShowcaseRoute
   '/select-showcase': typeof AuthenticatedSelectShowcaseRoute
+  '/table-showcase': typeof AuthenticatedTableShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -285,6 +293,7 @@ export interface FileRoutesByTo {
   '/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/popover-showcase': typeof AuthenticatedPopoverShowcaseRoute
   '/select-showcase': typeof AuthenticatedSelectShowcaseRoute
+  '/table-showcase': typeof AuthenticatedTableShowcaseRoute
   '/': typeof AuthenticatedIndexRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -323,6 +332,7 @@ export interface FileRoutesById {
   '/_authenticated/input-showcase': typeof AuthenticatedInputShowcaseRoute
   '/_authenticated/popover-showcase': typeof AuthenticatedPopoverShowcaseRoute
   '/_authenticated/select-showcase': typeof AuthenticatedSelectShowcaseRoute
+  '/_authenticated/table-showcase': typeof AuthenticatedTableShowcaseRoute
   '/_authenticated/': typeof AuthenticatedIndexRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
@@ -360,6 +370,7 @@ export interface FileRouteTypes {
     | '/input-showcase'
     | '/popover-showcase'
     | '/select-showcase'
+    | '/table-showcase'
     | '/'
     | '/settings/account'
     | '/settings/appearance'
@@ -393,6 +404,7 @@ export interface FileRouteTypes {
     | '/input-showcase'
     | '/popover-showcase'
     | '/select-showcase'
+    | '/table-showcase'
     | '/'
     | '/settings/account'
     | '/settings/appearance'
@@ -430,6 +442,7 @@ export interface FileRouteTypes {
     | '/_authenticated/input-showcase'
     | '/_authenticated/popover-showcase'
     | '/_authenticated/select-showcase'
+    | '/_authenticated/table-showcase'
     | '/_authenticated/'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
@@ -482,6 +495,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof AuthenticatedIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/table-showcase': {
+      id: '/_authenticated/table-showcase'
+      path: '/table-showcase'
+      fullPath: '/table-showcase'
+      preLoaderRoute: typeof AuthenticatedTableShowcaseRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/select-showcase': {
@@ -742,6 +762,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedInputShowcaseRoute: typeof AuthenticatedInputShowcaseRoute
   AuthenticatedPopoverShowcaseRoute: typeof AuthenticatedPopoverShowcaseRoute
   AuthenticatedSelectShowcaseRoute: typeof AuthenticatedSelectShowcaseRoute
+  AuthenticatedTableShowcaseRoute: typeof AuthenticatedTableShowcaseRoute
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
   AuthenticatedAppsIndexRoute: typeof AuthenticatedAppsIndexRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
@@ -758,6 +779,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedInputShowcaseRoute: AuthenticatedInputShowcaseRoute,
   AuthenticatedPopoverShowcaseRoute: AuthenticatedPopoverShowcaseRoute,
   AuthenticatedSelectShowcaseRoute: AuthenticatedSelectShowcaseRoute,
+  AuthenticatedTableShowcaseRoute: AuthenticatedTableShowcaseRoute,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
   AuthenticatedAppsIndexRoute: AuthenticatedAppsIndexRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
