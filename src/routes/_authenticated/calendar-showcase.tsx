@@ -9,11 +9,12 @@ import { Search } from '@/components/search'
 import { ThemeSwitch } from '@/components/theme-switch'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { Separator } from '@/components/ui/separator'
 import { Label } from '@/components/ui/label'
 import { Calendar } from '@/components/ui/calendar'
 import { DatePicker } from '@/components/date-picker'
 import { KoreanDatePicker } from '@/components/korean-date-picker'
+import { DateRange } from 'react-day-picker'
+import { KoreanDateRangePicker } from '@/components/korean-date-range-picker'
 
 export const Route = createFileRoute('/_authenticated/calendar-showcase')({
   component: CalendarShowcase,
@@ -22,6 +23,7 @@ export const Route = createFileRoute('/_authenticated/calendar-showcase')({
 function CalendarShowcase() {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>()
   const [koreanDate, setKoreanDate] = useState<Date | undefined>()
+  const [koreanDateRange, setKoreanDateRange] = useState<DateRange | undefined>()
 
   return (
     <>
@@ -146,7 +148,7 @@ function CalendarShowcase() {
                 </div>
               </div>
 
-              <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
+              <div className='grid grid-cols-1 md:grid-cols-3 gap-6'>
                 <div className='space-y-3'>
                   <Label>기본 DatePicker (영어)</Label>
                   <DatePicker
@@ -172,6 +174,20 @@ function CalendarShowcase() {
                     <div>• 한국어 요일 (일, 월, 화, ...)</div>
                     <div>• 날짜 포맷: yyyy년 MM월 dd일</div>
                     <div>• Korean locale + 커스텀 formatters</div>
+                  </div>
+                </div>
+                <div className='space-y-3'>
+                  <Label>한국어 기간 선택 DateRangePicker</Label>
+                  <KoreanDateRangePicker
+                    selected={koreanDateRange}
+                    onSelect={setKoreanDateRange}
+                    placeholder='기간을 선택하세요'
+                  />
+                  <div className='text-xs text-muted-foreground space-y-1'>
+                    <div>• mode='range' 설정</div>
+                    <div>• 시작일-종료일 선택</div>
+                    <div>• 한국어 형식: yyyy년 MM월 dd일</div>
+                    <div>• 기간 스타일링 자동 적용</div>
                   </div>
                 </div>
               </div>
